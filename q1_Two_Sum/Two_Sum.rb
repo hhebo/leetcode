@@ -6,14 +6,14 @@ def two_sum(nums, target)
   hash = {}
   hash[nums[0]] = 0
   (1...nums.length).each do |i|
-      temp = target - nums[i]
-      if hash.has_key?(temp)
-          result << hash[temp]
-          result << i
-          return result
-      else
-          hash[nums[i]] = i
-      end
+    temp = target - nums[i]
+    if hash.key?(temp)
+      result << hash[temp]
+      result << i
+      return result
+    else
+      hash[nums[i]] = i
+    end
   end
   result
 end
