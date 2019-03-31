@@ -1,2 +1,2 @@
 # leetcode
-> use ruby
+> use ruby and python
