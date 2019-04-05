@@ -51,18 +51,15 @@ Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 
 
 class Solution:
-    def romanToInt(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
-        d = {'M': 1000, 'D': 500, 'C': 100, 'L': 50, 'X': 10, 'V': 5, 'I': 1}
+    DICT = {'M': 1000, 'D': 500, 'C': 100, 'L': 50, 'X': 10, 'V': 5, 'I': 1}
+
+    def romanToInt(self, s: str) -> int:
         index, result = 0, 0
         while index < len(s) - 1:
-            if d[s[index]] < d[s[index + 1]]:
-                result += d[s[index + 1]] - d[s[index]]
+            if self.DICT[s[index]] < self.DICT[s[index + 1]]:
+                result += self.DICT[s[index + 1]] - self.DICT[s[index]]
                 index += 2
             else:
-                result += d[s[index]]
+                result += self.DICT[s[index]]
                 index += 1
-        return result + d[s[index]] if index == len(s) - 1 else result
+        return result + self.DICT[s[index]] if index == len(s) - 1 else result

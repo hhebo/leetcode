@@ -15,12 +15,8 @@ Output: 49
 
 
 class Solution:
-    def maxArea(self, height):
-        """
-        :type height: List[int]
-        :rtype: int
-        """
-        left, right, result = 0, len(height), 0
+    def maxArea(self, height: List[int]) -> int:
+        result, left, right = 0, 0, len(height) - 1
         while left < right:
             if height[left] < height[right]:
                 temp = height[left] * (right - left)

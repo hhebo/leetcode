@@ -24,12 +24,7 @@ The median is (2 + 3)/2 = 2.5
 
 
 class Solution:
-    def findMedianSortedArrays(self, nums1, nums2):
-        """
-        :type nums1: List[int]
-        :type nums2: List[int]
-        :rtype: float
-        """
+    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
         nums = []
         length = len(nums1) + len(nums2)
         i = j = 0

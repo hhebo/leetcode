@@ -17,14 +17,10 @@ Output: "bb"
 
 
 class Solution:
-    def longestPalindrome(self, s):
-        """
-        :type s: str
-        :rtype: str
-        """
+    def longestPalindrome(self, s: str) -> str:
         left = right = index = 0
-        while (index < len(s)):
-            start = end = index
+        while index < len(s):
+            start = index
             index += 1
             while index < len(s) and s[index] == s[start]:
                 index += 1

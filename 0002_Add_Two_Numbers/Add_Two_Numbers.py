@@ -22,22 +22,18 @@ Explanation: 342 + 465 = 807.
 #         self.next = None
 
 class Solution:
-    def addTwoNumbers(self, l1, l2):
-        """
-        :type l1: ListNode
-        :type l2: ListNode
-        :rtype: ListNode
-        """
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
         result = ListNode(0)
-        cur = result
+        current = result
         temp = 0
         while l1 or l2:
-            a = l1.val if l1 else 0
-            b = l2.val if l2 else 0
-            cur.next = ListNode((a + b + temp) % 10)
-            cur = cur.next
-            temp = (a + b + temp) // 10
+            v1 = l1.val if l1 else 0
+            v2 = l2.val if l2 else 0
+            current.next = ListNode((v1 + v2 + temp) % 10)
+            current = current.next
+            temp = (v1 + v2 + temp) // 10
             l1 = l1.next if l1 else None
             l2 = l2.next if l2 else None
-        cur.next = ListNode(1) if temp else None
+        current.next = ListNode(1) if temp else None
         return result.next
+

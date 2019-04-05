@@ -54,12 +54,6 @@ Output: false
 
 
 class Solution:
-    def isMatch(self, s, p):
-        """
-        :type s: str
-        :type p: str
-        :rtype: bool
-        """
-        import re
+    def isMatch(self, s: str, p: str) -> bool:
         r = re.match(p, s)
         return True if r and r.group() == s else False

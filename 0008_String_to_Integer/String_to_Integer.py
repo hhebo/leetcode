@@ -51,14 +51,10 @@ Explanation: The number "-91283472332" is out of the range of a 32-bit signed in
 
 
 class Solution:
-    INT_MAX = 2**31 - 1
-    INT_MIN = -2**31
+    INT_MAX = 2 ** 31 - 1
+    INT_MIN = -2 ** 31
 
-    def myAtoi(self, str):
-        """
-        :type str: str
-        :rtype: int
-        """
+    def myAtoi(self, str: str) -> int:
         flag = False
         index = 0
         result = ''

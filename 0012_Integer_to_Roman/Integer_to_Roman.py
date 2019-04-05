@@ -51,17 +51,14 @@ Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 
 
 class Solution:
-    def intToRoman(self, num):
-        """
-        :type num: int
-        :rtype: str
-        """
-        keys = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I']
-        values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+    KEYS = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I']
+    VALUES = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+
+    def intToRoman(self, num: int) -> str:
         index, result = 0, ''
         while num > 0:
-            while num >= values[index]:
-                result += keys[index]
-                num -= values[index]
+            while num >= self.VALUES[index]:
+                result += self.KEYS[index]
+                num -= self.VALUES[index]
             index += 1
         return result

@@ -44,9 +44,9 @@ class Solution:
         loop = 2 * numRows - 2
         for i in range(numRows):
             j = 0
-            while (i + j < len(s)):
+            while i + j < len(s):
                 result += s[i + j]
-                if (i != 0 and i != numRows - 1 and j + loop - i < len(s)):
+                if i != 0 and i != numRows - 1 and j + loop - i < len(s):
                     result += s[j + loop - i]
                 j += loop
         return result

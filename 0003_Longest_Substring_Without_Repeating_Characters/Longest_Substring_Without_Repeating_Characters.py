@@ -25,15 +25,9 @@ Explanation: The answer is "wke", with the length of 3.
 
 
 class Solution:
-    def lengthOfLongestSubstring(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
+    def lengthOfLongestSubstring(self, s: str) -> int:
         freq = [0] * 256
-        left = 0
-        right = -1
-        result = 0
+        left, right, result = 0, -1, 0
         while right + 1 < len(s):
             if freq[ord(s[right + 1])] == 0:
                 right += 1

@@ -16,15 +16,9 @@ return [0, 1].
 
 
 class Solution:
-    def twoSum(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: List[int]
-        """
-        d = {}
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        hash_map = {}
         for i, num in enumerate(nums):
-            if num in d:
-                return [d[num], i]
-            else:
-                d[target - num] = i
+            if num in hash_map:
+                return [hash_map[num], i]
+            hash_map[target - num] = i
