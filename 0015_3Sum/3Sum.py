@@ -20,36 +20,24 @@ A solution set is:
 
 
 class Solution:
-    def threeSum(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[List[int]]
-        """
-        d = {}
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
         result = []
-        for k, v in enumerate(nums):
-            try:
-                d[v].append(k)
-            except KeyError:
-                d[v] = [k]
-        nums = sorted(set(nums))
-        length = len(nums)
-        for i in range(length - 2):
-            left = i + 1
-            right = length - 1
-            while left < right:
-                if nums[i] + nums[left] + nums[right] == 0:
-                    result.append([nums[i], nums[left], nums[right]])
-                    left += 1
-                    right -= 1
-                elif nums[i] + nums[left] + nums[right] < 0:
-                    left += 1
-                else:
-                    right -= 1
-        for k in d:
-            if k == 0 and len(d.get(k)) > 2:
-                result.append([0, 0, 0])
+        nums.sort()
+        for i in range(len(nums) - 2):
+            if i > 0 and nums[i] == nums[i - 1]:
                 continue
-            if len(d.get(k)) > 1 and k != 0 and d.get(-2 * k) is not None:
-                result.append(sorted([k, k, -2 * k]))
+            left, right = i + 1, len(nums) - 1
+            while left < right:
+                sums = nums[i] + nums[left] + nums[right]
+                if sums < 0:
+                    left += 1
+                elif sums > 0:
+                    right -= 1
+                else:
+                    result.append([nums[i], nums[left], nums[right]])
+                    while left < right and nums[left] == nums[left + 1]:
+                        left += 1
+                    while left < right and nums[right] == nums[right - 1]:
+                        right -= 1
+                    left, right = left + 1, right - 1
         return result

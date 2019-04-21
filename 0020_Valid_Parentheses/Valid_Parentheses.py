@@ -39,16 +39,10 @@ Output: true
 
 class Solution:
     def isValid(self, s: str) -> bool:
-        result = []
-        for i in range(len(s)):
-            if s[i] in ['(', '[', '{']:
-                result.append(s[i])
-                continue
-            if s[i] == ')' and (len(result) == 0 or result.pop() != '('):
+        result, paren_map = [], {')': '(', ']': '[', '}': '{'}
+        for c in s:
+            if c not in paren_map:
+                result.append(c)
+            elif not result or result.pop() != paren_map[c]:
                 return False
-            if s[i] == ']' and (len(result) == 0 or result.pop() != '['):
-                return False
-            if s[i] == '}' and (len(result) == 0 or result.pop() != '{'):
-                return False
-        return True if len(result) == 0 else False
-
+        return not result
