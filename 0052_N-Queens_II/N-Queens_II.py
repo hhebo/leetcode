@@ -3,15 +3,16 @@
 """
 The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other.
 
-Given an integer n, return all distinct solutions to the n-queens puzzle.
-
-Each solution contains a distinct board configuration of the n-queens' placement, where 'Q' and '.' both indicate a queen and an empty space respectively.
+Given an integer n, return the number of distinct solutions to the n-queens puzzle.
 
 Example:
 
 Input: 4
 
-Output: [
+Output: 2
+
+Explanation: There are two distinct solutions to the 4-queens puzzle as shown below.
+[
  [".Q..",  // Solution 1
   "...Q",
   "Q...",
@@ -22,26 +23,26 @@ Output: [
   "...Q",
   ".Q.."]
 ]
-
-Explanation: There exist two distinct solutions to the 4-queens puzzle as shown above.
 """
 
 
 class Solution:
-    def solveNQueens(self, n: int) -> List[List[str]]:
-        result, current = [], [['.'] * n for _ in range(n)]
-        self._solve(current, n, 0, result)
-        return result
+    def __init__(self) -> None:
+        self.result = 0
 
-    def _solve(self, cur: List[List[str]], n: int, row: int, res: List[List[str]]) -> None:
+    def totalNQueens(self, n: int) -> int:
+        cur = [['.'] * n for _ in range(n)]
+        self._solve(cur, n, 0)
+        return self.result
+
+    def _solve(self, cur: List[List[str]], n: int, row: int) -> None:
         if row == len(cur):
-            t = [''.join(e) for e in cur]
-            res.append(t)
+            self.result += 1
             return
         for col in range(len(cur)):
             if self._isValid(cur, row, col):
                 cur[row][col] = 'Q'
-                self._solve(cur, n, row + 1, res)
+                self._solve(cur, n, row + 1)
                 cur[row][col] = '.'
 
     def _isValid(self, cur: List[List[str]], row: int, col: int) -> bool:
