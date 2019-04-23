@@ -40,12 +40,12 @@ class Solution:
             self.result += 1
             return
         for col in range(len(cur)):
-            if self._isValid(cur, row, col):
+            if self._is_valid(cur, row, col):
                 cur[row][col] = 'Q'
                 self._solve(cur, n, row + 1)
                 cur[row][col] = '.'
 
-    def _isValid(self, cur: List[List[str]], row: int, col: int) -> bool:
+    def _is_valid(self, cur: List[List[str]], row: int, col: int) -> bool:
         for i in range(row):
             if cur[i][col] == 'Q':
                 return False
