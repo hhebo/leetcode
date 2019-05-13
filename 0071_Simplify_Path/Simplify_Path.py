@@ -53,7 +53,7 @@ class Solution:
             start = index
             while index < len(path) and path[index] != '/':
                 index += 1
-            end, temp = index, path[start: end]
+            temp = path[start: index]
             if temp == '..':
                 if len(arr) != 0:
                     arr.pop()
