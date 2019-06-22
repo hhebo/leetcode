@@ -52,7 +52,7 @@ class Solution:
 
     def _valid(self, root, low, high):
         if root:
-            if root.val <= low or root.val >= high:
+            if not low < root.val < high:
                 return False
             return self._valid(root.left, low, root.val) and self._valid(root.right, root.val, high)
         return True
